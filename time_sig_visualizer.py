@@ -87,7 +87,7 @@ def eval_time_sigs(text: str) -> list[str]:
             raise ValueError(f'Invalid numerator: {evnumer}')
         if not isinstance(evdenom, int):
             raise ValueError(f'Invalid denominator: {evdenom}') 
-        if denom <= -1:
+        if evdenom <= -1:
             raise ValueError(f'Invalid denominator: {evdenom}')
         
         # Normal case: just 2 numbers between slashes
