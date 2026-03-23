@@ -20,7 +20,7 @@ def eval_time_sigs(text: str) -> list[str]:
     Notes
     -----
     - Obviously, multiplying a time signature by 0 is valid, but adds nothing to the list.
-    - Making the numerator 0 is valid and makes the visualize_time_sig() function just print an empty line.
+    - Making the numerator 0 is valid and makes the visualize_time_sigs() function just print an empty line.
     - No list denominators, because who in the right mind would do that?
     - The function corrects errors in spacing (e.g. 13 * [12, 11] / 8 -> 13*[12,11]/8)
 
@@ -45,10 +45,10 @@ def eval_time_sigs(text: str) -> list[str]:
     ['9/4', '9/4', '9/4', '12/8', '11/8', '12/8', '11/8', '5/4']
     >>> eval_time_sigs('-2*5/4')
     Traceback (most recent call last):
-      File "<python-input-5>", line 1, in <module>
+      File "<python-input-4>", line 1, in <module>
         eval_time_sigs('-2*5/4')
         ~~~~~~~~~~~~~~^^^^^^^^^^
-      File "<python-input-3>", line 68, in eval_time_sigs
+      File "<python-input-2>", line 68, in eval_time_sigs
         raise ValueError(f'Invalid repetition number: {rep}')
         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
     ValueError: Invalid repetition number: -2
@@ -59,19 +59,19 @@ def eval_time_sigs(text: str) -> list[str]:
         i = i.split('*')
         length = len(i)
         fraction = i[length - 1].split('/')
-        
+
         # Some validating
         if len(fraction) != 2:
             raise ValueError(f'Invalid time signature: {fraction}')  
-        
-        evrep = 1 # Failsafe if evrep is actually checked to be defined in line 83, 85 and 87 in future Python updates
+
+        evrep = 1 # Failsafe if evrep is actually checked to be defined in line 79 and 82 in future Python updates
         if length==2:
             rep = i[0]
             evrep = leval(rep)
         numer, denom = fraction
         evnumer = leval(numer)
         evdenom = leval(denom)
-        
+
         # Mass validating
         if length == 2:
             if not isinstance(evrep, int):
@@ -89,7 +89,6 @@ def eval_time_sigs(text: str) -> list[str]:
             raise ValueError(f'Invalid denominator: {evdenom}') 
         if evdenom <= -1:
             raise ValueError(f'Invalid denominator: {evdenom}')
-        
         # Normal case: just 2 numbers between slashes
         if not isinstance(evnumer, list):
             time_sigs += [f'{evnumer}/{evdenom}'] * (evrep if length == 2 else 1)
@@ -117,9 +116,8 @@ def visualize_time_sigs(bpm: float, time_sigs: list):
     - Uses time.sleep() for beat timing, which may introduce slight drift over time.
     - A numerator of 0 results in an empty line.
     - Denominators are assumed to be positive integers.
-    - This function is intended : for simple console visualization, not precise musical notation; 
-    to be paired with eval_time_sigs() in the second argument.
-    - This function actually just prints stuff and not returning anything.
+    - This function is intended for simple console visualization, not precise musical notation.
+
     Raises
     ------
     ValueError
@@ -130,11 +128,11 @@ def visualize_time_sigs(bpm: float, time_sigs: list):
 
     Examples
     --------
-    >>> visualize_time_sig(120, ['3/4', '5/4'])
+    >>> visualize_time_sigs(120, ['3/4', '5/4'])
     1 2 3
     1 2 3 4 5
 
-    >>> visualize_time_sig(90, ['0/4'])
+    >>> visualize_time_sigs(90, ['0/4'])
     # prints an empty line
     """
     # Validate bpm
