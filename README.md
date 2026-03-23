@@ -36,7 +36,7 @@ No external dependencies are required beyond Python 3.
 ### Expand time signatures
 
 ```python
-from your_module import eval_time_sigs
+from time_sig_visualizer import eval_time_sigs
 
 print(eval_time_sigs("3*9/4 2*[12,11]/8 5/4"))
 # Output: ['9/4', '9/4', '9/4', '12/8', '11/8', '12/8', '11/8', '5/4']
@@ -45,7 +45,7 @@ print(eval_time_sigs("3*9/4 2*[12,11]/8 5/4"))
 ### Visualize beats
 
 ```python
-from your_module import visualize_time_sig
+from time_sig_visualizer import visualize_time_sig
 
 visualize_time_sig(120, ["3/4", "5/4"])
 # Output:
