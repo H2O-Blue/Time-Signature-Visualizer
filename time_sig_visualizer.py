@@ -116,7 +116,9 @@ def visualize_time_sigs(bpm: float, time_sigs: list):
     - Uses time.sleep() for beat timing, which may introduce slight drift over time.
     - A numerator of 0 results in an empty line.
     - Denominators are assumed to be positive integers.
-    - This function is intended for simple console visualization, not precise musical notation.
+    - This function is intended: for simple console visualization, not precise musical notation;
+    to be paired with eval_time_sigs()
+    - This function just prints stuff, so it won't return anything.
 
     Raises
     ------
