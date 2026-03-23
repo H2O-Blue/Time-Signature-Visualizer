@@ -19,7 +19,7 @@ def eval_time_sigs(text: str) -> list[str]:
     
     Notes
     -----
-    - Obviously, multiplying a time signature by 0 i valid, but adds nothing to the list.
+    - Obviously, multiplying a time signature by 0 is valid, but adds nothing to the list.
     - Making the numerator 0 is valid and makes the visualize_time_sig() function just print an empty line.
     - No list denominators, because who in the right mind would do that?
     - The function corrects errors in spacing (e.g. 13 * [12, 11] / 8 -> 13*[12,11]/8)
@@ -64,7 +64,7 @@ def eval_time_sigs(text: str) -> list[str]:
         if len(fraction) != 2:
             raise ValueError(f'Invalid time signature: {fraction}')  
         
-        evrep = 1 # Failsafe if evrep is actually checked to be defined in line 79 and 82 in future Python updates
+        evrep = 1 # Failsafe if evrep is actually checked to be defined in line 83, 85 and 87 in future Python updates
         if length==2:
             rep = i[0]
             evrep = leval(rep)
@@ -117,8 +117,9 @@ def visualize_time_sig(bpm: float, time_sigs: list):
     - Uses time.sleep() for beat timing, which may introduce slight drift over time.
     - A numerator of 0 results in an empty line.
     - Denominators are assumed to be positive integers.
-    - This function is intended for simple console visualization, not precise musical notation.
-
+    - This function is intended : for simple console visualization, not precise musical notation; 
+    to be paired with eval_time_sigs() in the second argument.
+    - This function actually just prints stuff and not returning anything.
     Raises
     ------
     ValueError
