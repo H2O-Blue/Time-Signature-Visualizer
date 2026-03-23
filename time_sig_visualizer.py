@@ -98,7 +98,7 @@ def eval_time_sigs(text: str) -> list[str]:
             time_sigs+=[f'{i}/{denom}' for i in evnumer] * (evrep if length == 2 else 1)
     return time_sigs
 
-def visualize_time_sig(bpm: float, time_sigs: list):
+def visualize_time_sigs(bpm: float, time_sigs: list):
     """
     Visualize time signatures at a given tempo by printing beats in sequence.
 
